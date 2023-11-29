@@ -14,11 +14,11 @@
                   <el-icon ><User /></el-icon>
                 </template>
             </el-input> -->
-              <input v-model="email" type="text" class="inputs" placeholder="输入邮箱">  
+              <input v-model="form.email" type="text" class="inputs" placeholder="输入邮箱">  
             </div>
             <div class="input-items">
               <span class="input-tips">密码</span>
-              <input v-model="password" type="password" class="inputs" placeholder="输入密码">
+              <input v-model="form.password" type="password" class="inputs" placeholder="输入密码">
               <router-link to="/forgetpassword">忘记密码</router-link>
             </div>
             <button class="btn" @click="login">登录</button>
@@ -34,6 +34,32 @@
 
 <script setup>
 import {User} from "@element-plus/icons-vue";
+import {ElMessage} from "element-plus";
+import {post} from "@/net";
+import {reactive} from "vue";
+
+const form = reactive({
+    email: "",
+    password: ""
+})
+
+const login = () => {
+    if(form.email === "" || form.password === "") {
+        ElMessage({
+            message: "邮箱或密码不能为空",
+            type: "warning"
+        })
+        return
+    } else {
+        post('api/auth/login', {
+            email: form.email,
+            password: form.password
+        }, (message) =>{
+            ELMessage.success(message)
+            router.push({path: "/home"})
+        })
+    }
+}
 
 </script>
 
