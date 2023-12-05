@@ -55,7 +55,7 @@ const login = () => {
             email: form.email,
             password: form.password
         }, (message) =>{
-            ELMessage.success(message)
+            ElMessage.success(message)
             router.push({path: "/home"})
         })
     }
