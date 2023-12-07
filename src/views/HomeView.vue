@@ -44,8 +44,6 @@ export default {
   justify-content: space-between;
   padding-left: 0;
   align-items: center;
-  color: #fff;
-  font-size: 20px;
 > div{
 display: flex;
 align-items: center;
