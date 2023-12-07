@@ -21,12 +21,12 @@
                         <span class="input-tips">
                             确认密码
                         </span>
-                        <input type="confirmpassword" class="inputs" placeholder="确认密码">
+                        <input type="password" class="inputs" placeholder="确认密码">
                         <span class="input-tips">
                             验证码
                         </span>
                         <div class="input-container">
-                            <input type="confirmcode" class="inputs" placeholder="输入验证码" />
+                            <input type="code" class="inputs" placeholder="输入验证码" />
                             <span class="codeBtn" id="second">获取验证码</span>
                         </div>
                         <!-- <div id="popup"></div> -->
