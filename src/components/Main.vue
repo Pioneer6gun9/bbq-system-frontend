@@ -3,12 +3,14 @@
         <div class="app-contain">
             <div class="form-container">
                 <div class="filter-view">
-                    <el-input v-model="filterText" placeholder="请输入搜索内容" class="filter-input">
+                    <!-- <el-input v-model="filterText" placeholder="请输入问卷名称" class="filter-input">
                         <template #prepend>
                             <el-icon ><Search /></el-icon>
                         </template>
-                    </el-input>
-                    <el-button type="primary" @click="handleCreate">创建问卷</el-button>
+                    </el-input> -->
+                    <input v-model="form.filter" type="text" class="filter-input" placeholder="请输入问卷名称">
+                    <el-button type="primary" :icon="Search" class="filter-button">搜索</el-button>
+                    <el-button type="primary" :icon="Plus" @click="handleCreate">创建问卷</el-button>
 
                 </div>
                 <div class="project-container">
@@ -26,34 +28,14 @@
     </div>
 </template>
 
-<script>
-
-import {Search} from "@element-plus/icons-vue";
+<script setup>
+import {Search, Plus} from "@element-plus/icons-vue";
 import {ElButton, ElInput} from "element-plus";
-import {defineComponent, reactive} from "vue";
+import { reactive } from 'vue';
 
-export default defineComponent({
-    components: {
-        ElInput,
-        ElButton
-    },
-    setup() {
-        const filterText = reactive({
-            filterText: ""
-        })
-
-        const handleCreate = () => {
-            console.log("创建问卷")
-        }
-
-        return {
-            filterText,
-            handleCreate
-        }
-    }
-})
-
-
+const form = reactive({
+  filter: '',
+});
 
 
 </script>
@@ -62,14 +44,30 @@ export default defineComponent({
 
 .filter-view {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-
 }
 
 .filter-input {
-    width: 100px;
+    width: 300px;
+    height: 36px;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.3s;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.filter-input:focus {
+    border: 1px solid #806ac4;
+}
+
+.filter-button {
+    margin-right: 100px; 
 }
 
 .card-container {
